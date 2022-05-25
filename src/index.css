@@ -1,3 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 @tailwind base;
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    color: #4a4f61;
+    line-height: 26px;
+
+}
 @tailwind components;
+
+.btn-primary {
+    @apply text-white hover:bg-secondary hover:text-neutral px-6 py-4 h-14;
+} 
+
+.navbar {
+    @apply py-5
+}
+
+.menu a {
+    @apply text-secondary font-medium hover:text-accent hover:font-semibold;
+}
+
 @tailwind utilities;

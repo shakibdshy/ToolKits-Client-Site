@@ -56,12 +56,12 @@ function App() {
                 <Route path='/products' element={<Products />} />
                 <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
                   <Route index element={<MyOrder />} />
-                  <Route path='/all-order' element={<ManageAllOrders />} />
-                  <Route path='/manage-products' element={<ManageProducts />} />
-                  <Route path='/review' element={<AddAReview />} />
-                  <Route path='/add-product' element={<AddAProduct />} />
-                  <Route path='/make-admin' element={<MakeAdmin />} />
-                  <Route path='/my-profile' element={<MyProfile />} />
+                  <Route path='all-order' element={<ManageAllOrders />} />
+                  <Route path='manage-products' element={<ManageProducts />} />
+                  <Route path='review' element={<AddAReview />} />
+                  <Route path='add-product' element={<AddAProduct />} />
+                  <Route path='make-admin' element={<MakeAdmin />} />
+                  <Route path='my-profile' element={<MyProfile />} />
                 </Route>
                 <Route path='/sign-in' element={<SignIn />} />
                 <Route path='/signup' element={<SignUp />} />

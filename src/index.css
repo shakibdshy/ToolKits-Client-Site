@@ -10,7 +10,7 @@ body {
 @tailwind components;
 
 .btn-primary {
-    @apply text-white hover:bg-secondary hover:text-neutral px-6 py-4 h-14;
+    @apply text-white shadow-indigo-500/50 shadow-md hover:shadow-secondary hover:border-transparent hover:bg-secondary hover:text-neutral px-6 py-4 h-14;
 } 
 
 .navbar {

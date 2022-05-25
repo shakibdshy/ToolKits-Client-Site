@@ -21,6 +21,13 @@ body {
     @apply text-secondary font-medium hover:text-accent hover:font-semibold;
 }
 
+.blog-item:hover {
+    background-color: #fff;
+    box-shadow: 0 10px 60px 0 rgba(89, 86, 233, .1);
+    border-color: transparent;
+    @apply transition duration-150 ease-out;
+}
+
 .swiper-horizontal>.swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,

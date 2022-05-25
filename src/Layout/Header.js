@@ -18,6 +18,7 @@ const Header = () => {
                                     <li><Link to='/'>Home</Link></li>
                                     <li><Link to='/products'>Product</Link></li>
                                     <li><Link to='/blog'>Blog</Link></li>
+                                    <li><Link to='/dashboard'>Dashboard</Link></li>
                                 </ul>
                             </div>
                             <Link to='/'>
@@ -28,6 +29,7 @@ const Header = () => {
                             <ul className="menu menu-horizontal p-0">
                                 <li><Link to='/'>Home</Link></li>                            
                                 <li><Link to='/products'>Product</Link></li>
+                                <li><Link to='/dashboard'>Dashboard</Link></li>
                                 <li><Link to='/blog'>Blog</Link></li>
                             </ul>
                         </div>

@@ -21,4 +21,11 @@ body {
     @apply text-secondary font-medium hover:text-accent hover:font-semibold;
 }
 
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    bottom: 0 !important;
+}
+
 @tailwind utilities;

@@ -20,6 +20,7 @@ import MyProfile from "./Pages/Dashboard/MyProfile";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import Products from "./Pages/Products/Products";
 import BlogPage from "./Pages/BlogPage";
+import RequireAuth from "./Pages/Log/RequireAuth";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -53,14 +54,14 @@ function App() {
                 <Route path='/home' element={<Home />} />
                 <Route path='/blog' element={<BlogPage />} />
                 <Route path='/products' element={<Products />} />
-                <Route path='/dashboard' element={<Dashboard />}>
-                  <Route path='/dashboard/my-order' element={<MyOrder />} />
-                  <Route path='/dashboard/all-order' element={<ManageAllOrders />} />
-                  <Route path='/dashboard/manage-products' element={<ManageProducts />} />
-                  <Route path='/dashboard/review' element={<AddAReview />} />
-                  <Route path='/dashboard/add-product' element={<AddAProduct />} />
-                  <Route path='/dashboard/make-admin' element={<MakeAdmin />} />
-                  <Route path='/dashboard/my-profile' element={<MyProfile />} />
+                <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
+                  <Route index element={<MyOrder />} />
+                  <Route path='/all-order' element={<ManageAllOrders />} />
+                  <Route path='/manage-products' element={<ManageProducts />} />
+                  <Route path='/review' element={<AddAReview />} />
+                  <Route path='/add-product' element={<AddAProduct />} />
+                  <Route path='/make-admin' element={<MakeAdmin />} />
+                  <Route path='/my-profile' element={<MyProfile />} />
                 </Route>
                 <Route path='/sign-in' element={<SignIn />} />
                 <Route path='/signup' element={<SignUp />} />

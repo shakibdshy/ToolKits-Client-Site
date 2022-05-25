@@ -2,8 +2,19 @@ import React from 'react';
 import logo from '../logo.jpg';
 import { Link } from 'react-router-dom';
 import { FaChevronRight  } from 'react-icons/fa';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from "firebase/auth";
+import auth from '../utils/firebase.init';
+import { toast } from 'react-toastify';
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+
+    const handelSignOut = () => {
+        signOut(auth);
+        toast.success("Sign out successfully");
+        // console.log(signOut(auth));
+    };
     return (
         <>
             <header>
@@ -29,13 +40,26 @@ const Header = () => {
                             <ul className="menu menu-horizontal p-0">
                                 <li><Link to='/'>Home</Link></li>                            
                                 <li><Link to='/products'>Product</Link></li>
-                                <li><Link to='/dashboard'>Dashboard</Link></li>
+                                {
+                                    user && (
+                                        <li><Link to='/dashboard'>Dashboard</Link></li>
+                                    )
+                                }
                                 <li><Link to='/blog'>Blog</Link></li>
                             </ul>
                         </div>
-                        <div className="navbar-end">
-                            <Link to='/sign-in' className="btn btn-primary">SignIn <FaChevronRight className='ml-1' /></Link>
-                        </div>
+                        {
+                            user ? (
+                                <div className="navbar-end">
+                                    <Link to='/' onClick={handelSignOut} className="btn btn-light-primary">SignOut</Link>
+                                </div>
+                            ) : (
+                                <div className="navbar-end">
+                                    <Link to='/sign-in' className="btn btn-primary">SignIn <FaChevronRight className='ml-1' /></Link>
+                                </div>
+                                    
+                            )
+                        }
                     </nav>  
                 </div>
             </header>

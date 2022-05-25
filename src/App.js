@@ -43,7 +43,7 @@ function App() {
       {
         isLoading ?
           (
-            <HashLoader color={"#36D7B7"} loading={isLoading} css={override} size={80} />
+            <HashLoader color={"#7432ff"} loading={isLoading} css={override} size={80} />
           )
           :
           (

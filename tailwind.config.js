@@ -4,7 +4,11 @@ module.exports = {
   ],
 
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "light-primary": "#ceb7ff",
+      },
+    },
   },
 
   daisyui: {

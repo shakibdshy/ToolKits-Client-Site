@@ -4,7 +4,7 @@ import CountUp from 'react-countup';
 const Counter = () => {
     return (
         <>
-            <section className="text-gray-600 body-font bg-[#fafafb]">
+            <section className="text-gray-600 body-font bg-[#f7f7f4]">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-col text-center w-full mb-20">
                         <h1 className="sm:text-6xl text-4xl font-bold title-font mb-4 text-secondary">Why People’s Like Us</h1>

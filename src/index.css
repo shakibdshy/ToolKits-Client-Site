@@ -13,8 +13,12 @@ body {
     @apply text-white shadow-indigo-500/50 shadow-md hover:shadow-secondary hover:border-transparent hover:bg-secondary hover:text-neutral px-6 py-4 h-14;
 } 
 
+.btn-light-primary {
+    @apply bg-light-primary text-primary border-light-primary hover:shadow-primary hover:border-transparent hover:bg-primary hover:text-white ;
+}
+
 .navbar {
-    @apply py-5
+    @apply py-5;
 }
 
 .menu a {
@@ -26,6 +30,10 @@ body {
     box-shadow: 0 10px 60px 0 rgba(89, 86, 233, .1);
     border-color: transparent;
     @apply transition duration-150 ease-out;
+}
+
+.product-item:hover {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .swiper-horizontal>.swiper-pagination-bullets,

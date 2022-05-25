@@ -1,10 +1,13 @@
 import React from 'react';
+import ProductItem from '../../Shared/ProductItem';
 
 const Products = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <section className='py-28'>
+                <ProductItem />
+            </section>
+        </>
     );
 };
 

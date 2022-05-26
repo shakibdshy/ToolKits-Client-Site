@@ -86,4 +86,10 @@ body {
     bottom: 0 !important;
 }
 
+.dashboard-box-container {
+    @apply mb-8 p-6 bg-white rounded-[32px] shadow-md;
+    box-shadow: 0 1.6rem 3rem rgba(0, 0, 0, .1);
+    
+}
+
 @tailwind utilities;

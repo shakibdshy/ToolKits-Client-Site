@@ -13,7 +13,6 @@ const Dashboard = () => {
             <div className="drawer drawer-mobile bg-[#f8f9fa]">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="container mx-auto px-8 py-14 drawer-content flex flex-col">
-                    <h2 className='text-2xl font-bold mb-8'>My Dashboard</h2>
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                     <Outlet />
                 </div>  

@@ -37,7 +37,7 @@ const ManageAllOrders = () => {
                             <td>Cy Ganderton</td>
                             <td>Jessica Moore</td>
                             <td>100</td>
-                            <td><span className='badge badge-error'>Cancel</span></td>
+                            <td><span className='badge badge-error'>Unpaid</span></td>
                             <td><button className='btn btn-light-cancel btn-sm' type="button">Cancel</button></td>
                         </tr>
                     </tbody>

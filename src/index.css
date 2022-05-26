@@ -17,6 +17,10 @@ body {
     @apply bg-light-primary text-primary border-light-primary hover:shadow-primary hover:border-transparent hover:bg-primary hover:text-white ;
 }
 
+.btn-light-cancel {
+    @apply bg-red-300 text-red-900 border-red-300 hover:shadow-red-300 hover:border-transparent hover:bg-red-900 hover:text-white ;
+}
+
 .navbar {
     @apply py-5;
 }
@@ -34,6 +38,45 @@ body {
 
 .product-item:hover {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.drawer-side {
+    box-shadow: 0 20px 27px 0 rgba(0, 0, 0, .05);
+}
+
+.drawer-side .menu a{
+    font-size: 0.75rem;
+    color: #67748e;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.drawer-side .menu{
+    border-radius: .5rem;
+    padding-top: .675rem;
+    padding-bottom: .675rem;
+}
+
+.drawer-side .menu .active{
+    color: #344767;
+    background-color: #fff;
+    font-weight: 600;
+    box-shadow: 0 20px 27px 0 rgba(0, 0, 0, .1);
+}
+
+.drawer-side .menu .active span{
+    @apply w-8 h-8 p-[10px] rounded-lg shadow-md shadow-primary bg-primary text-white text-center;
+}
+
+.drawer-side .menu a:hover {
+    background: transparent;
+    box-shadow: 0 20px 27px 0 rgba(0, 0, 0, .05);
+}
+
+.dashboard-table-container {
+    box-shadow: 0 1.6rem 3rem rgba(0, 0, 0, .1);
+    padding: 15px;
+    border-radius: 15px;
 }
 
 .swiper-horizontal>.swiper-pagination-bullets,

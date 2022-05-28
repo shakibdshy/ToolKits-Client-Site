@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import HashLoader from "react-spinners/HashLoader";
 
 const ManageProducts = () => {
-    // const [deleteProduct, setDeleteProduct] = useState(null);
+    const [deleteProduct, setDeleteProduct] = useState(null);
     const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch('http://localhost:5000/tools', {
         method: 'GET',
     }).then(res => res.json()));
     if (isLoading) {
-        return 'Looks like we are loading...';
+        return <HashLoader className='mx-auto mt-4' color={"#36D7B7"} size={30} />;
     }
     return (
         <>
@@ -32,8 +33,8 @@ const ManageProducts = () => {
                                     <tr key={index} refetch={refetch}>
                                         <td>{index + 1}</td>
                                         <td>
-                                            <div class="avatar">
-                                                <div class="mask mask-squircle w-12 h-12">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
                                                     <img src={tool.img} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
@@ -46,9 +47,9 @@ const ManageProducts = () => {
                                             <button
                                                 className="btn btn-light-cancel btn-sm"
                                                 type="button"
-                                                // onClick={() => {
-                                                //     setDeleteProduct(tool.id);
-                                                // }}
+                                                onClick={() => {
+                                                    setDeleteProduct(tool.id);
+                                                }}
                                             >
                                                 Delete
                                             </button>
@@ -57,15 +58,6 @@ const ManageProducts = () => {
                                 )
                             })
                         }
-                        {/* <tr>
-                            <th>1</th>
-                            <td>Image</td>
-                            <td>Beveled Cone</td>
-                            <td>100</td>
-                            <td>10</td>
-                            <td>$70</td>
-                            <td><button className='btn btn-light-cancel btn-sm' type="button">Delete</button></td>
-                        </tr> */}
                     </tbody>
                 </table>
             </div> 

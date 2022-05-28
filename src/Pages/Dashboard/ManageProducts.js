@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import HashLoader from "react-spinners/HashLoader";
+import DeleteModal from '../../Components/DeleteModal';
 
 const ManageProducts = () => {
     const [deleteProduct, setDeleteProduct] = useState(null);
@@ -28,7 +29,6 @@ const ManageProducts = () => {
                     <tbody>
                         {
                             tools.map((tool, index) => {
-                                console.log(tool);
                                 return (
                                     <tr key={index} refetch={refetch}>
                                         <td>{index + 1}</td>
@@ -44,15 +44,7 @@ const ManageProducts = () => {
                                         <td>{tool.minOrder}</td>
                                         <td>{tool.price}</td>
                                         <td>
-                                            <button
-                                                className="btn btn-light-cancel btn-sm"
-                                                type="button"
-                                                onClick={() => {
-                                                    setDeleteProduct(tool.id);
-                                                }}
-                                            >
-                                                Delete
-                                            </button>
+                                            <label htmlFor="my-modal-3" className="btn btn-light-cancel btn-sm modal-button " onClick={() => setDeleteProduct(tool)}>Delete Product</label>
                                         </td>
                                     </tr>
                                 )
@@ -60,6 +52,13 @@ const ManageProducts = () => {
                         }
                     </tbody>
                 </table>
+                {
+                    deleteProduct && <DeleteModal
+                        deleteProduct={deleteProduct}
+                        tools={tools}
+                        refetch={refetch}
+                    ></DeleteModal>
+                }
             </div> 
         </>
     );

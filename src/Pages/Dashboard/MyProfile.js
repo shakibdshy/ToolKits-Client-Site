@@ -33,19 +33,19 @@ const MyProfile = () => {
                                 </div>
                             </div>
                             <div className="grid grid-cols-1 gap-6">
-                                <input type="text" placeholder="First Name" class="input input-bordered input-secondary w-full" />
-                                <input type="text" placeholder="Display Name" class="input input-bordered input-secondary w-full" />
-                                <input type="text" placeholder="Educational Background" class="input input-bordered input-secondary w-full" />
-                                <input type="text" placeholder="Skill" class="input input-bordered input-secondary w-full" />
-                                <input type="text" placeholder="Project Link 1" class="input input-bordered input-secondary w-full" />
-                                <input type="text" placeholder="Project Link 2" class="input input-bordered input-secondary w-full" />
-                                <input type="text" placeholder="Project Link 3" class="input input-bordered input-secondary w-full" />
+                                <input type="text" placeholder="First Name" className="input input-bordered input-secondary w-full" />
+                                <input type="text" placeholder="Display Name" className="input input-bordered input-secondary w-full" />
+                                <input type="text" placeholder="Educational Background" className="input input-bordered input-secondary w-full" />
+                                <input type="text" placeholder="Skill" className="input input-bordered input-secondary w-full" />
+                                <input type="text" placeholder="Project Link 1" className="input input-bordered input-secondary w-full" />
+                                <input type="text" placeholder="Project Link 2" className="input input-bordered input-secondary w-full" />
+                                <input type="text" placeholder="Project Link 3" className="input input-bordered input-secondary w-full" />
                             </div>
                         </div>
                         <div className='dashboard-box-container'>
                             <div className="mb-8 flex items-center gap-4">
                                 <figure className=''>
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" class="svg-icon--material svg-icon card-icon h-8 w-8" data-name="Material--Phonelink"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M18 10h4v7h-4z" opacity="0.3"></path><path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z"></path></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" className="svg-icon--material svg-icon card-icon h-8 w-8" data-name="Material--Phonelink"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M18 10h4v7h-4z" opacity="0.3"></path><path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z"></path></svg>
                                 </figure>
                                 <div className="">
                                     <h2 className="text-xl text-secondary font-bold">Contact Information</h2>
@@ -53,13 +53,13 @@ const MyProfile = () => {
                                 </div>
                             </div>
                             <div className="grid grid-cols-2 gap-6">
-                                <input type="email" placeholder="Email" class="input input-bordered input-secondary w-full" />
-                                <input type="text" placeholder="Phone" class="input input-bordered input-secondary w-full" />
+                                <input type="email" placeholder="Email" className="input input-bordered input-secondary w-full" />
+                                <input type="text" placeholder="Phone" className="input input-bordered input-secondary w-full" />
                             </div>
                         </div>
                         <div className='dashboard-box-container flex items-center justify-between gap-1'>
                             <p className='text-warning flex items-center gap-1'>
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" class="svg-icon--material svg-icon svg-icon-lg me-2" fill='hsl(var(--wa))' data-name="Material--Warning"><path d="M4.47 19h15.06L12 5.99 4.47 19zM13 18h-2v-2h2v2zm0-4h-2v-4h2v4z" opacity="0.3"></path><path d="M1 21h22L12 2 1 21zm3.47-2L12 5.99 19.53 19H4.47zM11 16h2v2h-2zm0-6h2v4h-2z"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" className="svg-icon--material svg-icon svg-icon-lg me-2" fill='hsl(var(--wa))' data-name="Material--Warning"><path d="M4.47 19h15.06L12 5.99 4.47 19zM13 18h-2v-2h2v2zm0-4h-2v-4h2v4z" opacity="0.3"></path><path d="M1 21h22L12 2 1 21zm3.47-2L12 5.99 19.53 19H4.47zM11 16h2v2h-2zm0-6h2v4h-2z"></path></svg>
                                 Not saved yet</p>
                             <button className='btn btn-light-primary' type="button">Update</button>
                         </div>

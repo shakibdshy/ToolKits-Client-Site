@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import axios from 'axios';
 
 const Review = () => {
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        const getProducts = async () => {
+            const url = 'http://localhost:5000/reviews';
+            const { data } = await axios.get(url);
+            setReviews(data);
+        }
+        getProducts();
+    }, [])
     return (
         <>
             
@@ -37,50 +48,24 @@ const Review = () => {
                         modules={[Pagination]}
                         className="review-slider"
                     >
-                        <SwiperSlide>
-                            <div className="lg:mb-0 mb-6 p-4">
-                                <div className="h-full text-center">
-                                    <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="https://dummyimage.com/302x302" />
-                                    <p className="leading-relaxed">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words</p>
-                                    <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4"></span>
-                                    <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">HOLDEN CAULFIELD</h2>
-                                    <p className="text-gray-500">Senior Product Designer</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="lg:mb-0 mb-6 p-4">
-                                <div className="h-full text-center">
-                                    <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="https://dummyimage.com/302x302" />
-                                    <p className="leading-relaxed">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words</p>
-                                    <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4"></span>
-                                    <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">HOLDEN CAULFIELD</h2>
-                                    <p className="text-gray-500">Senior Product Designer</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="lg:mb-0 mb-6 p-4">
-                                <div className="h-full text-center">
-                                    <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="https://dummyimage.com/302x302" />
-                                    <p className="leading-relaxed">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words</p>
-                                    <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4"></span>
-                                    <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">HOLDEN CAULFIELD</h2>
-                                    <p className="text-gray-500">Senior Product Designer</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="lg:mb-0 mb-6 p-4">
-                                <div className="h-full text-center">
-                                    <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="https://dummyimage.com/302x302" />
-                                    <p className="leading-relaxed">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words</p>
-                                    <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4"></span>
-                                    <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">HOLDEN CAULFIELD</h2>
-                                    <p className="text-gray-500">Senior Product Designer</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
+                        {
+                            reviews.map((review, index) => {
+                                return (
+                                    <SwiperSlide key={index}>
+                                        <div className="lg:mb-0 mb-6 p-4">
+                                            <div className="h-full text-center">
+                                                <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src={review.image} />
+                                                <p className="leading-relaxed">{review.massage}</p>
+                                                <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4"></span>
+                                                <div className="font-bold">{review.rating} / 5</div>
+                                                <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">{review.displayName}</h2>
+                                                <p className="text-gray-500">{review.designation }</p>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                )
+                             })
+                        }
                     </Swiper>
                 </div>
             </section>

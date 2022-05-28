@@ -32,24 +32,24 @@ const AddAProduct = () => {
                                 </div>
                             </div>
                             <div className="grid grid-cols-1 gap-6">
-                                <input type="text" placeholder="Product Name" class="input input-bordered input-secondary w-full" />
-                                <textarea placeholder="Short description" class="textarea textarea-secondary"></textarea>
-                                <input type="number" placeholder="Minimum order quantity" class="input input-bordered input-secondary w-full" />
-                                <input type="number" placeholder="Available quantity" class="input input-bordered input-secondary w-full" />
-                                <input type="number" placeholder="Price" class="input input-bordered input-secondary w-full" />
+                                <input type="text" placeholder="Product Name" className="input input-bordered input-secondary w-full" />
+                                <textarea placeholder="Short description" className="textarea textarea-secondary"></textarea>
+                                <input type="number" placeholder="Minimum order quantity" className="input input-bordered input-secondary w-full" />
+                                <input type="number" placeholder="Available quantity" className="input input-bordered input-secondary w-full" />
+                                <input type="number" placeholder="Price" className="input input-bordered input-secondary w-full" />
                             </div>
                         </div>
                         <div className='dashboard-box-container'>
                             <div className="mb-8 flex items-center gap-4">
                                 <figure className=''>
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" class="svg-icon--material svg-icon card-icon h-8 w-8" data-name="Material--Phonelink"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M18 10h4v7h-4z" opacity="0.3"></path><path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z"></path></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" className="svg-icon--material svg-icon card-icon h-8 w-8" data-name="Material--Phonelink"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M18 10h4v7h-4z" opacity="0.3"></path><path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z"></path></svg>
                                 </figure>
                                 <div className="">
                                     <h2 className="text-xl text-secondary font-bold">Contact Information</h2>
                                 </div>
                             </div>
                             <div className="grid grid-cols-1 gap-6">
-                                <input type="email" placeholder="Email" class="input input-bordered input-secondary w-full" />
+                                <input type="email" placeholder="Email" className="input input-bordered input-secondary w-full" />
                             </div>
                         </div>
                         <div className='dashboard-box-container flex items-center justify-between gap-1'>

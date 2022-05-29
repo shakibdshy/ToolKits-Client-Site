@@ -47,7 +47,7 @@ const AddAReview = () => {
                         rating,
                     }
                     const getReview = async () => {
-                        const url = 'http://localhost:5000/add-review';
+                        const url = 'https://toolkitsnode.herokuapp.com/add-review';
                         const { data } = await axios.post(url, reviewer);
                         console.log(data);
                     }

@@ -5,7 +5,7 @@ const DeleteModal = ({ deleteProduct, refetch }) => {
     const { _id, name } = deleteProduct;
     const handleDelete = (id) => {
         console.log('deleting', id);
-        fetch(`http://localhost:5000/tools/${id}`, {
+        fetch(`https://toolkitsnode.herokuapp.com/tools/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

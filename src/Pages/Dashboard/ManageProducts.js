@@ -5,7 +5,7 @@ import DeleteModal from '../../Components/DeleteModal';
 
 const ManageProducts = () => {
     const [deleteProduct, setDeleteProduct] = useState(null);
-    const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch('http://localhost:5000/tools', {
+    const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch('https://toolkitsnode.herokuapp.com/tools', {
         method: 'GET',
     }).then(res => res.json()));
     if (isLoading) {

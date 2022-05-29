@@ -10,7 +10,7 @@ const Review = () => {
 
     useEffect(() => {
         const getProducts = async () => {
-            const url = 'http://localhost:5000/reviews';
+            const url = 'https://toolkitsnode.herokuapp.com/reviews';
             const { data } = await axios.get(url);
             setReviews(data);
         }

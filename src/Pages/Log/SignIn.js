@@ -44,7 +44,7 @@ const LogIn = () => {
 
     if (email || password) {
       await signInWithEmailAndPassword(email, password);
-      const { data } = await axios.post("http://localhost:5000/login", { email });
+      const { data } = await axios.post("https://toolkitsnode.herokuapp.com/login", { email });
       console.log(data);
       localStorage.setItem("accessToken", data.token);
       await new Promise((resolve) => setTimeout(resolve, 1000));

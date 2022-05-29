@@ -17,7 +17,7 @@ const MyProfile = () => {
     const [defaultUser, setDefault] = useState({});
     const { education, skill, address, phone, project1, project2, project3 } = defaultUser;
     useEffect(() => {
-        fetch(`http://localhost:5000/user?email=${email}`)
+        fetch(`https://toolkitsnode.herokuapp.com/user?email=${email}`)
             .then(res => res.json())
             .then(data => setDefault(data))
     }, [])
@@ -26,7 +26,7 @@ const MyProfile = () => {
 
     const onSubmit = data => {
         console.log(email, data);
-        fetch(`http://localhost:5000/user-info-update/${email}`, {
+        fetch(`https://toolkitsnode.herokuapp.com/user-info-update/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

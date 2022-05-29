@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const ManageAllOrders = () => {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/all-orders', {
+        fetch('https://toolkitsnode.herokuapp.com/all-orders', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ const ManageAllOrders = () => {
 
     const handleShipment = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/ship-order/${id}`, {
+        fetch(`https://toolkitsnode.herokuapp.com/ship-order/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

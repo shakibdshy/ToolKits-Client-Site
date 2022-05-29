@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import HashLoader from "react-spinners/HashLoader";
 
 const MakeAdmin = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/all-users', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://toolkitsnode.herokuapp.com/all-users', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -19,7 +19,7 @@ const MakeAdmin = () => {
     const makeAdmin = (email) => {
         console.log('making admin', email);
 
-        fetch(`http://localhost:5000/user-update/${email}`, {
+        fetch(`https://toolkitsnode.herokuapp.com/user-update/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

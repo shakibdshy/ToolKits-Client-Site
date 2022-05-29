@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import DeleteConfirmModal from '../../Components/DeleteConfirmModal';
 import auth from '../../utils/firebase.init';
 
 const MyOrder = () => {
@@ -45,7 +46,7 @@ const MyOrder = () => {
                                         <th>${order.totalPrice}</th>
                                         <td className='flex items-center gap-2'>
                                             <button className='btn btn-success btn-sm' type="button">Pay Now</button>
-                                            <button className='btn btn-light-cancel btn-sm' type="button">Cancel</button>
+                                            <label htmlFor='my-modal-3' onClick={() => setDeletingOrder(order)} className='btn btn-light-cancel btn-sm' type="button">Cancel</label>
                                         </td>
                                     </tr>
                                 )
@@ -53,6 +54,12 @@ const MyOrder = () => {
                         }
                     </tbody>
                 </table>
+                {deletingOrder && <DeleteConfirmModal
+                    deletingOrder={deletingOrder}
+                    orders={orders}
+                    setOrders={setOrders}
+                    setDeletingOrder={setDeletingOrder}
+                ></DeleteConfirmModal>}
             </div>   
         </>
     );

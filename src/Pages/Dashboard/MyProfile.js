@@ -39,6 +39,7 @@ const MyProfile = () => {
                 if (data.success) {
                     toast.success("Profile information successfully added");
                 };
+                reset();
             })
     };
     return (
@@ -73,24 +74,6 @@ const MyProfile = () => {
                         </div>
                         <div className='md:w-1/2'>
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <div className='dashboard-box-container flex items-center space-x-6'>
-                                    <div className="shrink-0">
-                                        <img className="h-32 w-32 object-cover rounded-3xl" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1361&q=80" alt="" />
-                                    </div>
-                                    <label className="block">
-                                        <span className="sr-only">Choose profile photo</span>
-                                        <input type="file"
-                                            {...register("photoURL")}
-                                            className="block w-full text-sm text-[#323232]
-                                        bg-[#f8f9fa] rounded-2xl border border-solid border-[#f8f9fa]
-                                        file:mr-4 file:py-2 file:px-4
-                                        file:rounded-full file:border-0
-                                        file:text-sm file:font-semibold
-                                        file:bg-violet-50 file:text-violet-700
-                                        hover:file:bg-violet-100
-                                        "/>
-                                    </label>
-                                </div>
                                 <div className='dashboard-box-container'>
                                     <div className="mb-8 flex items-center gap-4">
                                         <figure className=''>

@@ -22,6 +22,7 @@ import Products from "./Pages/Products/Products";
 import BlogPage from "./Pages/BlogPage";
 import RequireAuth from "./Pages/Log/RequireAuth";
 import ProductDetails from "./Pages/Products/ProductDetails";
+import Payment from "./Pages/Dashboard/Payment";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -63,6 +64,7 @@ function App() {
                 <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
                   <Route index element={<MyOrder />} />
                   <Route path='all-order' element={<ManageAllOrders />} />
+                  <Route path='payment/:id' element={<Payment />} />
                   <Route path='manage-products' element={<ManageProducts />} />
                   <Route path='review' element={<AddAReview />} />
                   <Route path='add-product' element={<AddAProduct />} />

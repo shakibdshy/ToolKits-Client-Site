@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import DeleteConfirmModal from '../../Components/DeleteConfirmModal';
 import auth from '../../utils/firebase.init';
 
@@ -45,7 +46,7 @@ const MyOrder = () => {
                                         <th>{order.quantity }</th>
                                         <th>${order.totalPrice}</th>
                                         <td className='flex items-center gap-2'>
-                                            <button className='btn btn-success btn-sm' type="button">Pay Now</button>
+                                            <Link to={`/dashboard/payment/${order._id}`}  className='btn btn-success btn-sm' type="button">Pay Now</Link>
                                             <label htmlFor='my-modal-3' onClick={() => setDeletingOrder(order)} className='btn btn-light-cancel btn-sm' type="button">Cancel</label>
                                         </td>
                                     </tr>

@@ -1,6 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const ManageAllOrders = () => {
+    const [orders, setOrders] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/all-orders', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+
+            .then(res => res.json())
+            .then(data => setOrders(data))
+    }, []);
+
+    const handleShipment = (id) => {
+        console.log(id);
+        fetch(`http://localhost:5000/ship-order/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    toast.success('Successfully shipped the order');
+                }
+            })
+    }
+
     return (
         <>
             <div className="dashboard-table-container overflow-x-auto">
@@ -16,33 +48,38 @@ const ManageAllOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Jessica Moore</td>
-                            <td>100</td>
-                            <td><span className='badge badge-warning'>Pending</span></td>
-                            <td><button className='btn btn-light-cancel btn-sm' type="button">Cancel</button></td>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>Cy Ganderton</td>
-                            <td>Jessica Moore</td>
-                            <td>100</td>
-                            <td><span className='badge badge-success'>Success</span></td>
-                            <td><button className='btn btn-success btn-sm' type="button">Shipped</button></td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>Cy Ganderton</td>
-                            <td>Jessica Moore</td>
-                            <td>100</td>
-                            <td><span className='badge badge-error'>Unpaid</span></td>
-                            <td><button className='btn btn-light-cancel btn-sm' type="button">Cancel</button></td>
-                        </tr>
+                        {
+                            orders.map((order, index) => {
+                                console.log(order);
+                                return (
+                                    <tr>
+                                        <th>{index + 1}</th>
+                                        <td>{order.name}</td>
+                                        <td>{order.buyerName}</td>
+                                        <td>{order.quantity}</td>
+                                        <td>{order.paid ? <span className='btn btn-xs btn-success'>{order.shipped ? 'shipped' : 'pending'}</span> : <span className='btn btn-xs btn-light-cancel'>unpaid</span>}</td>
+                                        <td>
+                                            <div className='flex gap-3'>
+                                                {
+                                                    order.shipped ?
+                                                        <span className='btn btn-xs btn-success'>shipped</span>
+                                                        :
+
+                                                        order.paid ?
+                                                            <button className='btn btn-xs btn-warning' onClick={() => handleShipment(order._id)}>Ship</button>
+                                                            :
+                                                            <span className='btn btn-xs btn-light-cancel'>Not paid yet</span>
+
+                                                }
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
-            </div> 
+            </div>
         </>
     );
 };

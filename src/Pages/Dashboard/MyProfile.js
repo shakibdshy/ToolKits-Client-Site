@@ -1,9 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faGraduationCap,
+    faLocationDot,
+    faEnvelope,
+    faPhoneFlip,
+} from "@fortawesome/free-solid-svg-icons";
 import auth from '../../utils/firebase.init';
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
+    const { displayName, email, photoURL } = user;
+    const [defaultUser, setDefault] = useState({});
+    const { education, skill, address, phone, project1, project2, project3 } = defaultUser;
+    useEffect(() => {
+        fetch(`http://localhost:5000/user?email=${email}`)
+            .then(res => res.json())
+            .then(data => setDefault(data))
+    }, [])
+    console.log(defaultUser);
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+    const onSubmit = data => {
+        console.log(email, data);
+        fetch(`http://localhost:5000/user-info-update/${email}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    toast.success("Profile information successfully added");
+                };
+            })
+    };
     return (
         <>
             <div className='profile-section'>
@@ -12,28 +49,39 @@ const MyProfile = () => {
                         <div className='md:w-1/2'>
                             <div className='dashboard-box-container'>
                                 <div className='profile-card'>
-                                    <img className='w-24 h-24 rounded-full object-cover mx-auto' src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1361&q=80" alt="" />
+                                    {photoURL ? (
+                                        <img src={photoURL} alt="" />
+                                    ) : (
+                                            <img
+                                                className='w-24 h-24 rounded-full object-cover mx-auto'
+                                            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+                                            alt=""
+                                        />
+                                    )}
                                     <ul>
-                                        <li><span className='font-bold'>Name:</span> { user.displayName }</li>
-                                        <li><span className='font-bold'>Email:</span> { user.email }</li>
-                                        <li><span className='font-bold'>Educational:</span></li>
-                                        <li><span className='font-bold'>Skill:</span></li>
-                                        <li><span className='font-bold'>Project Link 1:</span></li>
-                                        <li><span className='font-bold'>Project Link 2:</span></li>
-                                        <li><span className='font-bold'>Project Link 3:</span></li>
+                                        <li><span className='font-bold'>Name:</span> {displayName}</li>
+                                        <li><FontAwesomeIcon icon={faEnvelope} /> <span className='font-bold'>Email:</span> {email}</li>
+                                        <li><FontAwesomeIcon icon={faGraduationCap} /> <span className='font-bold'>Educational:</span> {education ? education : 'No information'}</li>
+                                        <li><FontAwesomeIcon icon={faLocationDot} /><span className='font-bold'>Skill:</span> { skill}</li>
+                                        <li><FontAwesomeIcon icon={faLocationDot} /><span className='font-bold'>Location:</span> {address ? address : 'No information'}</li>
+                                        <li><FontAwesomeIcon icon={faLocationDot} /> <span className='font-bold'>Project Link 1:</span> {project1 ? project1 : ''}</li>
+                                        <li><FontAwesomeIcon icon={faLocationDot} /> <span className='font-bold'>Project Link 2:</span> {project2 ? project2 : ''}</li>
+                                        <li><FontAwesomeIcon icon={faLocationDot} /> <span className='font-bold'>Project Link 3:</span> {project3 ? project3 : ''}</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div className='md:w-1/2'>
-                            <form>
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className='dashboard-box-container flex items-center space-x-6'>
                                     <div className="shrink-0">
                                         <img className="h-32 w-32 object-cover rounded-3xl" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1361&q=80" alt="" />
                                     </div>
                                     <label className="block">
                                         <span className="sr-only">Choose profile photo</span>
-                                        <input type="file" className="block w-full text-sm text-[#323232]
+                                        <input type="file"
+                                            {...register("photoURL")}
+                                            className="block w-full text-sm text-[#323232]
                                         bg-[#f8f9fa] rounded-2xl border border-solid border-[#f8f9fa]
                                         file:mr-4 file:py-2 file:px-4
                                         file:rounded-full file:border-0
@@ -54,13 +102,35 @@ const MyProfile = () => {
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-1 gap-6">
-                                        <input type="text" placeholder="First Name" className="input input-bordered input-secondary w-full" />
-                                        <input type="text" placeholder="Display Name" className="input input-bordered input-secondary w-full" />
-                                        <input type="text" placeholder="Educational Background" className="input input-bordered input-secondary w-full" />
-                                        <input type="text" placeholder="Skill" className="input input-bordered input-secondary w-full" />
-                                        <input type="text" placeholder="Project Link 1" className="input input-bordered input-secondary w-full" />
-                                        <input type="text" placeholder="Project Link 2" className="input input-bordered input-secondary w-full" />
-                                        <input type="text" placeholder="Project Link 3" className="input input-bordered input-secondary w-full" />
+                                        <input type="text"
+                                            {...register("displayName", {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Your Name is required'
+                                                }
+                                            })}
+                                            placeholder="Display Name" className="input input-bordered input-secondary w-full" />
+                                        <input type="text"
+                                            {...register("education", {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Your Education is required'
+                                                }
+                                            })}
+                                            placeholder="Educational Background" className="input input-bordered input-secondary w-full" />
+                                        <input type="text"
+                                            {...register("skill", {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Your Skill is required'
+                                                }
+                                            })}
+                                            placeholder="Skill" className="input input-bordered input-secondary w-full" />
+                                        <input type="text"
+                                            {...register("project1")}
+                                            placeholder="Project Link 1" className="input input-bordered input-secondary w-full" />
+                                        <input type="text" {...register("project2")} placeholder="Project Link 2" className="input input-bordered input-secondary w-full" />
+                                        <input type="text" {...register("project3")} placeholder="Project Link 3" className="input input-bordered input-secondary w-full" />
                                     </div>
                                 </div>
                                 <div className='dashboard-box-container'>
@@ -74,15 +144,15 @@ const MyProfile = () => {
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-2 gap-6">
-                                        <input type="email" placeholder="Email" value={user.email} readOnly className="input input-bordered input-secondary w-full" />
-                                        <input type="text" placeholder="Phone" className="input input-bordered input-secondary w-full" />
+                                        <input type="email" placeholder="Email" value={user.email} {...register("email")} readOnly className="input input-bordered input-secondary w-full" />
+                                        <input type="text" {...register("phone")} placeholder="Phone" className="input input-bordered input-secondary w-full" />
                                     </div>
                                 </div>
                                 <div className='dashboard-box-container flex items-center justify-between gap-1'>
                                     <p className='text-warning flex items-center gap-1'>
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" className="svg-icon--material svg-icon svg-icon-lg me-2" fill='hsl(var(--wa))' data-name="Material--Warning"><path d="M4.47 19h15.06L12 5.99 4.47 19zM13 18h-2v-2h2v2zm0-4h-2v-4h2v4z" opacity="0.3"></path><path d="M1 21h22L12 2 1 21zm3.47-2L12 5.99 19.53 19H4.47zM11 16h2v2h-2zm0-6h2v4h-2z"></path></svg>
                                         Not saved yet</p>
-                                    <button className='btn btn-light-primary' type="button">Update</button>
+                                    <button className='btn btn-light-primary' type="submit">Update</button>
                                 </div>
                             </form>
                         </div>

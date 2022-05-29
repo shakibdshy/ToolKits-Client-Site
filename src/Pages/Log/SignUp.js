@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -11,6 +11,7 @@ import auth from "../../utils/firebase.init";
 import InputField from "../../Components/InputField";
 import { css } from "@emotion/react";
 import { HashLoader } from "react-spinners";
+import useToken from "../../Hooks/useToken";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -22,6 +23,19 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating] = useUpdateProfile(auth);
+
+
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
+  const [token] = useToken(user);
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate])
+
 
   const override = css`
   position: absolute;

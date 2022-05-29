@@ -6,10 +6,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import auth from "../utils/firebase.init";
+import useToken from "../Hooks/useToken";
 
 const SocialLogin = () => {
     const navigate = useNavigate();
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    
+    const [token] = useToken(user);
+    
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 

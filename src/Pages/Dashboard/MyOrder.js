@@ -46,8 +46,21 @@ const MyOrder = () => {
                                         <th>{order.quantity }</th>
                                         <th>${order.totalPrice}</th>
                                         <td className='flex items-center gap-2'>
-                                            <Link to={`/dashboard/payment/${order._id}`}  className='btn btn-success btn-sm' type="button">Pay Now</Link>
-                                            <label htmlFor='my-modal-3' onClick={() => setDeletingOrder(order)} className='btn btn-light-cancel btn-sm' type="button">Cancel</label>
+                                            <div className='flex gap-5 justify-center'>
+                                                {
+                                                    order.paid ?
+                                                        <>
+                                                            <span className='btn btn-success btn-sm'>Paid</span>
+                                                            <p>TrxId: <span className='text-error'>{order.transactionId}</span></p>
+                                                        </>
+                                                        :
+                                                        <>
+                                                            <Link to={`/dashboard/payment/${order._id}`}  className='btn btn-success btn-sm' type="button">Pay Now</Link>
+                                                            <label htmlFor='my-modal-3' onClick={() => setDeletingOrder(order)} className='btn btn-light-cancel btn-sm' type="button">Cancel</label>
+                                                        </>
+                                                }
+
+                                            </div>
                                         </td>
                                     </tr>
                                 )

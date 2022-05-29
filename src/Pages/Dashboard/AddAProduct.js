@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../utils/firebase.init';
 
 const AddAProduct = () => {

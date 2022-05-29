@@ -31,6 +31,7 @@ const Header = () => {
                                     <li><Link to='/products'>Product</Link></li>
                                     <li><Link to='/blog'>Blog</Link></li>
                                     <li><Link to='/dashboard'>Dashboard</Link></li>
+                                    <li><Link to='/portfolio'>My Portfolio</Link></li>
                                 </ul>
                             </div>
                             <Link to='/'>
@@ -47,6 +48,7 @@ const Header = () => {
                                     )
                                 }
                                 <li><Link to='/blog'>Blog</Link></li>
+                                <li><Link to='/portfolio'>My Portfolio</Link></li>
                             </ul>
                         </div>
                         {

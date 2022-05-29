@@ -23,6 +23,7 @@ import BlogPage from "./Pages/BlogPage";
 import RequireAuth from "./Pages/Log/RequireAuth";
 import ProductDetails from "./Pages/Products/ProductDetails";
 import Payment from "./Pages/Dashboard/Payment";
+import MyPortfolio from "./Pages/MyPortfolio";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -71,6 +72,7 @@ function App() {
                   <Route path='make-admin' element={<MakeAdmin />} />
                   <Route path='my-profile' element={<MyProfile />} />
                 </Route>
+                  <Route path='/portfolio' element={<MyPortfolio />} />
                 <Route path='/sign-in' element={<SignIn />} />
                 <Route path='/signup' element={<SignUp />} />
                 <Route path='*' element={<NotFound />} />

@@ -25,12 +25,18 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 overflow-y-auto w-64 bg-base-100 text-base-content">
                         <li><NavLink to='/dashboard/my-profile'><span><BiUser /></span> My Profile</NavLink></li>
-                        <li><NavLink to='/dashboard'><span><BsCart3 /></span> My Order</NavLink></li>
-                        <li><NavLink to='/dashboard/review'><span><GiStarsStack /></span> Add A Review</NavLink></li>
-                        <li><NavLink to='/dashboard/all-order'><span><BsCart3 /></span> All Order</NavLink></li>
-                        <li><NavLink to='/dashboard/manage-products'><span><MdOutlineProductionQuantityLimits /></span> Manage All Products</NavLink></li>
-                        <li><NavLink to='/dashboard/add-product'><span><FaCartArrowDown /></span> Add A Product</NavLink></li>
-                        <li><NavLink to='/dashboard/make-admin'><span><AiOutlineUserSwitch /></span> Make Admin</NavLink></li>
+                        {!admin && <>
+                            <li><NavLink to='/dashboard'><span><BsCart3 /></span> My Order</NavLink></li>
+                            <li><NavLink to='/dashboard/review'><span><GiStarsStack /></span> Add A Review</NavLink></li>
+                        </>}
+                        {
+                            admin && <>
+                                <li><NavLink to='/dashboard/all-order'><span><BsCart3 /></span> All Order</NavLink></li>
+                                <li><NavLink to='/dashboard/manage-products'><span><MdOutlineProductionQuantityLimits /></span> Manage All Products</NavLink></li>
+                                <li><NavLink to='/dashboard/add-product'><span><FaCartArrowDown /></span> Add A Product</NavLink></li>
+                                <li><NavLink to='/dashboard/make-admin'><span><AiOutlineUserSwitch /></span> Make Admin</NavLink></li>
+                            </>
+                        }
                     </ul>
 
                 </div>

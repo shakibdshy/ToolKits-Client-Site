@@ -21,6 +21,7 @@ import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import Products from "./Pages/Products/Products";
 import BlogPage from "./Pages/BlogPage";
 import RequireAuth from "./Pages/Log/RequireAuth";
+import ProductDetails from "./Pages/Products/ProductDetails";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -54,6 +55,11 @@ function App() {
                 <Route path='/home' element={<Home />} />
                 <Route path='/blog' element={<BlogPage />} />
                 <Route path='/products' element={<Products />} />
+                <Route path="products/:id" element={
+                  <RequireAuth>
+                    <ProductDetails />
+                  </RequireAuth>
+                } />
                 <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
                   <Route index element={<MyOrder />} />
                   <Route path='all-order' element={<ManageAllOrders />} />

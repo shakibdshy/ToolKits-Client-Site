@@ -28,7 +28,7 @@ const Product = () => {
                                         <p className='text-[#7E7E7E] text-sm text-justify'>{product.content}</p>
                                         <div className='pt-5 flex flex-wrap gap-3 justify-between items-center'>
                                             <span className='text-primary block text-lg font-bold'>${product.price}</span>
-                                            <Link to='/products/:id' className='btn btn-light-primary bg-light'><BsCart3 className='mr-2' /> Order</Link>
+                                            <Link to={`/products/${product._id}`} className='btn btn-light-primary bg-light'><BsCart3 className='mr-2' /> Order</Link>
                                         </div>
                                     </div>
                                 </div>

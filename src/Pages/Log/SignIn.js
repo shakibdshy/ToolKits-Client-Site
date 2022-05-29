@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import HashLoader from "react-spinners/HashLoader";
 import SocialLogin from "../../Components/SocialLogin";
+import useToken from "../../Hooks/useToken";
 
 const LogIn = () => {
   const emailRef = useRef("");
@@ -20,15 +21,16 @@ const LogIn = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
-  let errorElement;
+  const [token] = useToken(user);
 
+  let errorElement;
   const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user]);
+  }, [token, from, navigate])
 
   if (error) {
     toast.error(`${error?.message}`)

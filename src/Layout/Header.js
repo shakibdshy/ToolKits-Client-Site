@@ -12,6 +12,7 @@ const Header = () => {
 
     const handelSignOut = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken');
         toast.success("Sign out successfully");
         // console.log(signOut(auth));
     };

@@ -20,7 +20,6 @@ const ProductDetails = () => {
         fetchData();
     }, [id]);
     const { name, price, content, img, minOrder, available } = product;
-    console.log(product);
     const onSubmit = e => {
         e.preventDefault();
         const buyerName = e.target.name.value;
@@ -40,7 +39,7 @@ const ProductDetails = () => {
             if (confirm) {
                 const newAvailable = available - quantity;
                 const newProduct = { ...product, available: newAvailable };
-                newProduct(newProduct);
+                setProduct(newProduct);
                 console.log(newOrder);
                 fetch('http://localhost:5000/orders', {
                     method: 'POST',

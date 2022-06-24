@@ -2,6 +2,12 @@
 
 # FireBase Live [Project Link](https://toolskitsreact.web.app/).
 
+# Admin Address
+```
+email: admin@admin.com
+Password: 224466
+```
+
 # *List Of Component*
 
 - **Header Component**
